@@ -5,29 +5,29 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1><a th:href="@{/}">Danh Sach</a></h1>
+<h1><a th:href="@{/}">Danh Sach Cong Ty</a></h1>
 <table border="1">
-  <tr>
-    <td>id</td>
-    <td>name</td>
-    <td>class</td>
-    <td>age</td>
-    <td>action</td>
-  </tr>
-  <tr th:each=" student : ${student}">
-    <td th:text="${student.id}"></td>
-    <td th:text="${student.name}"></td>
-    <td th:text="${student.clazz}"></td>
-    <td th:text="${student.age}"></td>
-    <td><a th:href="@{/edit/{id}(id=${student.id})}">Sua</a>
-        <a th:href="@{delete/{id}(id=${student.id})}">Xoa</a>
-    </td>
-  </tr>
+ <tr>
+  <td>id</td>
+  <td>name</td>
+  <td>address</td>
+  <td>tax</td>
+  <td>action</td>
+ </tr>
+  <tr th:each="company : ${company}">
+  <td th:text="${company.id}"></td>
+  <td th:text="${company.name}"></td>
+  <td th:text="${company.address}"></td>
+  <td th:text="${company.tax}"></td>
+  <td><a th:href="@{/edit/{id}(id=${company.id})}">Sua</a>
+      <a th:href="@{/delete/{id}(id=${company.id})}">Xoa</a>
+  </td>
+ </tr>
 </table>
 <a th:href="@{/add}">Them</a>
-<form action="search">
-  Search: <input type="text" name="keyword">
-  <button>Search</button>
+<form th:action="@{/search}">
+    Filter: <input type="text" name="keyword" id="keyword" th:value="${keyword}" />
+    <input type="submit" value="Search" />
 </form>
 </body>
 </html>

@@ -1,30 +1,31 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>
 <body>
-<form method="post" action="/save" th:object="${student}">
-<div>
-<input type="hidden" th:field="*{id}">
-</div>
-<div>
-<label>Name</label>
-<input type="text" th:field="*{name}">
-<small th:errors="*{name}"></small>
-</div>
-<div>
-<label>Class</label>
-<input type="text" th:field="*{clazz}">
-<small th:errors="*{clazz}"></small>
-</div>
-<div>
-<label>Age</label>
-<input type="text" th:field="*{age}">
-<small th:errors="*{age}"></small>
-<button>Save</button>
-</div>
+<form method="post" action="/save" th:object="${company}">
+<table>
+ <tr>
+   <td><input type="hidden" th:field="*{id}"><small th:errors="*{id}"></small></td>
+ </tr>
+ <tr>
+   <td>name</td>
+   <td><input type="text" th:field="*{name}"><small th:errors="*{name}"></small></td>
+ </tr>
+ <tr>
+   <td>address</td>
+   <td><input type="text" th:field="*{address}"><small th:errors="*{address}"></small></td>
+ </tr>
+ <tr>
+   <td>tax</td>
+   <td><input type="text" th:field="*{tax}"><small th:if="${#fields.hasErrors('tax')}" th:errors="*{tax}"></small></td>
+ </tr>
+ <tr>
+   <td colspan="2"><button>Save</button></td>
+ </tr>
+</table>
 </form>
 </body>
 </html>
